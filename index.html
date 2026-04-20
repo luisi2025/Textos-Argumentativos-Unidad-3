@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprension e Interpretacion de Textos Argumentativos</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        /* === CSS Variables === */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafbfc;
+            --bg-tertiary: #f4f6f8;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a68;
+            --text-muted: #6b7280;
+            --accent: #0066cc;
+            --accent-light: #3399ff;
+            --accent-dark: #004d99;
+            --accent-glow: rgba(0, 102, 204, 0.15);
+            --border: #e5e7eb;
+            --success: #10b981;
+            --success-light: #34d399;
+        }
+        
+        /* === Base Styles === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            line-height: 1.75;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        
+        /* === Custom Scrollbar === */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { 
+            background: linear-gradient(180deg, #0066cc, #004d99);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #004d99; }
+        
+        /* === Progress Bar === */
+        .progress-bar-custom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0066cc, #3399ff, #10b981);
+            z-index: 1050;
+            transition: width 0.15s ease-out;
+            box-shadow: 0 0 10px rgba(0, 102, 204, 0.5);
+        }
+        
+        /* === Navbar === */
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0.75rem 0;
+        }
+        
+        .navbar-custom.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .navbar-custom .nav-link {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            margin: 0 0.15rem;
+        }
+        
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+        }
+        
+        .navbar-custom .nav-link:hover {
+            color: var(--accent);
+            background: var(--accent-glow);
+        }
+        
+        .navbar-custom .nav-link:hover::after,
+        .navbar-custom .nav-link.active::after {
+            width: 60%;
+        }
+        
+        .navbar-custom .nav-link.active {
+            color: var(--accent);
+            background: var(--accent-glow);
+        }
+        
+        .navbar-toggler-custom {
+            border: none;
+            padding: 0.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-toggler-custom:hover {
+            background: var(--bg-tertiary);
+        }
+        
+        .navbar-toggler-custom:focus {
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        
+        /* === Logo === */
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0066cc, #004d99);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        /* === Header Background === */
+        .header-bg {
+            background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 50%, #fafbfc 100%);
+            position: relative;
+        }
+        
+        .header-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 102, 204, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        /* === Cards === */
+        .card-custom {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            background: linear-gradient(180deg, var(--accent-glow), transparent);
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 0;
+        }
+        
+        .card-custom:hover {
+            border-color: rgba(0, 102, 204, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 102, 204, 0.1);
+            transform: translateY(-4px);
+        }
+        
+        .card-custom:hover::before {
+            height: 100%;
+        }
+        
+        .card-custom > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card-border-top {
+            border-top: 4px solid var(--accent);
+        }
+        
+        .card-border-top-emerald {
+            border-top: 4px solid var(--success);
+        }
+        
+        .card-border-left {
+            border-left: 4px solid var(--success);
+        }
+        
+        /* === Accent Elements === */
+        .accent-bar {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--success));
+            border-radius: 3px;
+        }
+        
+        .accent-dot {
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3);
+        }
+        
+        /* === Badges === */
+        .badge-custom {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 102, 204, 0.05));
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: var(--accent-dark);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .badge-custom:hover {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.15), rgba(0, 102, 204, 0.1));
+            transform: scale(1.02);
+        }
+        
+        .badge-success-custom {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+            border-color: rgba(16, 185, 129, 0.2);
+            color: #059669;
+        }
+        
+        /* === Student Cards === */
+        .student-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border: 2px solid transparent;
+            border-radius: 16px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .student-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--accent), var(--success));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .student-card:hover::before {
+            opacity: 1;
+        }
+        
+        .student-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.15);
+        }
+        
+        .student-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .student-card:hover .student-avatar {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+        }
+        
+        .student-avatar span {
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .student-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        
+        .student-card:hover .student-name {
+            color: var(--accent);
+        }
+        
+        /* === Quote Block === */
+        .quote-block {
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.03), rgba(16, 185, 129, 0.03));
+            border-radius: 0 16px 16px 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            position: relative;
+        }
+        
+        .quote-block::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--accent-glow);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+        }
+        
+        /* === Icon Box === */
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .card-custom:hover .icon-box {
+            transform: rotate(-5deg) scale(1.1);
+        }
+        
+        /* === Section Label === */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+        }
+        
+        /* === Key Point === */
+        .key-point {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.04), rgba(16, 185, 129, 0.04));
+            border: 1px solid rgba(0, 102, 204, 0.1);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .key-point::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent), var(--success));
+        }
+        
+        /* === Argument Cards === */
+        .arg-card {
+            border-left: 4px solid;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .arg-card::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 0;
+            transition: width 0.4s ease;
+            z-index: 0;
+        }
+        
+        .arg-card:hover {
+            transform: translateX(8px);
+        }
+        
+        .arg-card:hover::after {
+            width: 100%;
+        }
+        
+        .arg-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .arg-card.authority { border-left-color: #3b82f6; }
+        .arg-card.authority::after { background: linear-gradient(90deg, rgba(59, 130, 246, 0.05), transparent); }
+        
+        .arg-card.cause { border-left-color: #8b5cf6; }
+        .arg-card.cause::after { background: linear-gradient(90deg, rgba(139, 92, 246, 0.05), transparent); }
+        
+        .arg-card.purpose { border-left-color: #f59e0b; }
+        .arg-card.purpose::after { background: linear-gradient(90deg, rgba(245, 158, 11, 0.05), transparent); }
+        
+        .arg-card.normative { border-left-color: #ef4444; }
+        .arg-card.normative::after { background: linear-gradient(90deg, rgba(239, 68, 68, 0.05), transparent); }
+        
+        /* === Reveal Animation === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* === Keyword Tags === */
+        .keyword-tag {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            margin: 0.25rem;
+        }
+        
+        .keyword-tag:hover {
+            background: linear-gradient(135deg, var(--accent-glow), rgba(0, 102, 204, 0.08));
+            border-color: rgba(0, 102, 204, 0.3);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* === Bibliography Links === */
+        .bib-link {
+            color: var(--accent);
+            text-decoration: none;
+            word-break: break-all;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+        
+        .bib-link:hover {
+            color: var(--accent-dark);
+            border-bottom-color: var(--accent);
+        }
+        
+        .bib-link:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+        
+        /* === Floating Animation === */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* === Footer === */
+        .footer-custom {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+        }
+        
+        /* === Focus States === */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+        
+        /* === Responsive Adjustments === */
+        @media (max-width: 991.98px) {
+            .navbar-custom .navbar-nav {
+                padding: 1rem;
+                background: rgba(255, 255, 255, 0.98);
+                border-radius: 12px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+                margin-top: 0.5rem;
+            }
+            
+            .navbar-custom .nav-link {
+                padding: 0.75rem 1rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Progress Bar -->
+    <div class="progress-bar-custom" id="progressBar" style="width: 0%;"></div>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="navbar" role="navigation" aria-label="Navegacion principal">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <div class="logo-icon">
+                    <i class="bi bi-book text-white"></i>
+                </div>
+                <div class="d-none d-sm-block">
+                    <span class="fw-semibold text-dark fs-5" style="font-family: 'Playfair Display', serif;">Universidad de Cartagena</span>
+                    <p class="text-muted mb-0" style="font-size: 0.7rem; margin-top: -2px;">NextCode</p>
+                </div>
+            </a>
+            
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler-custom navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list fs-4 text-secondary"></i>
+            </button>
+            
+            <!-- Navigation -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#introduccion">Introduccion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#objetivos">Objetivos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#texto-argumentativo">Texto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nivel-global">Nivel Global</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nivel-local">Nivel Local</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nivel-pragmatico">Nivel Pragmatico</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#conclusion">Conclusion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#bibliografia">Bibliografia</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Header -->
+    <header class="header-bg pt-32 pb-20" style="padding-top: 8rem; padding-bottom: 5rem;">
+        <div class="container">
+            <div class="text-center position-relative" style="z-index: 10;">
+                <!-- University Badge -->
+                <div class="d-inline-flex mb-3">
+                    <span class="badge-custom">
+                        <i class="bi bi-mortarboard"></i>
+                        Universidad de Cartagena
+                    </span>
+                </div>
+                
+                <!-- Unit -->
+                <p class="text-muted mb-2" style="font-size: 0.875rem;">Unidad 3 - Comprension y Produccion de Textos I</p>
+                
+                <!-- Title -->
+                <h1 class="display-5 fw-bold mb-4 px-2" style="font-family: 'Playfair Display', serif;">
+                    Comprension e Interpretacion de
+                    <span class="text-primary">Textos Argumentativos</span>
+                </h1>
+                
+                <!-- Divider -->
+                <div class="d-flex justify-content-center my-4">
+                    <div class="accent-bar"></div>
+                </div>
+                
+                <!-- Students Section -->
+                <div class="mt-5 pt-3">
+                    <p class="text-muted mb-4 fw-medium" style="font-size: 0.8rem; letter-spacing: 0.05em;">INTEGRANTES DEL GRUPO</p>
+                    <div class="row g-4 justify-content-center">
+                        <!-- Student 1 - Luisi -->
+                        <div class="col-6 col-md-3">
+                            <div class="student-card">
+                                <div class="student-avatar">
+                                    <span>L</span>
+                                </div>
+                                <p class="student-name">Luisi Castro Saucedo</p>
+                                <p class="text-muted mb-0" style="font-size: 0.75rem;">Estudiante</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Student 2 - Bleider -->
+                        <div class="col-6 col-md-3">
+                            <div class="student-card">
+                                <div class="student-avatar">
+                                    <span>B</span>
+                                </div>
+                                <p class="student-name">Bleider Acuña Lerma</p>
+                                <p class="text-muted mb-0" style="font-size: 0.75rem;">Estudiante</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Student 3 - Arianny -->
+                        <div class="col-6 col-md-3">
+                            <div class="student-card">
+                                <div class="student-avatar">
+                                    <span>A</span>
+                                </div>
+                                <p class="student-name">Arianny Torres Lopez</p>
+                                <p class="text-muted mb-0" style="font-size: 0.75rem;">Estudiante</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Student 4 - Andris -->
+                        <div class="col-6 col-md-3">
+                            <div class="student-card">
+                                <div class="student-avatar">
+                                    <span>A</span>
+                                </div>
+                                <p class="student-name">Andris Paola Melendez</p>
+                                <p class="text-muted mb-0" style="font-size: 0.75rem;">Estudiante</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="pb-5" style="padding-bottom: 6rem;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    
+                    <!-- Introducción -->
+                    <section id="introduccion" class="reveal mb-5">
+                        <div class="card-custom p-4 p-md-5">
+                            <div class="d-flex align-items-center gap-3 mb-4">
+                                <div class="icon-box bg-primary bg-opacity-10">
+                                    <i class="bi bi-book text-primary fs-5"></i>
+                                </div>
+                                <h2 class="h2 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Introduccion</h2>
+                            </div>
+                            
+                            <div class="accent-bar mb-4"></div>
+                            
+                            <div class="text-secondary">
+                                <p class="mb-4">
+                                    La comprension e interpretacion de textos argumentativos constituye una <strong class="text-dark">competencia fundamental</strong> en el ambito academico, ya que permite desarrollar habilidades de lectura critica, analisis de ideas y reconocimiento de la intencion comunicativa de los autores.
+                                </p>
+                                
+                                <p class="mb-4">
+                                    En este sentido, la presente actividad se centra en el analisis de un texto argumentativo emitido por la <strong class="text-dark">Organizacion Mundial de la Salud (OMS)</strong>, relacionado con la campana del Dia Mundial sin Tabaco 2020.
+                                </p>
+                                
+                                <div class="key-point mt-4">
+                                    <p class="fw-semibold text-dark mb-2" style="font-size: 0.875rem;">Enfoque del analisis:</p>
+                                    <p class="mb-0" style="font-size: 0.875rem;">
+                                        A traves de los niveles de analisis <strong class="text-dark">global, local y pragmatico</strong>, se busca interpretar el mensaje del texto, identificar sus argumentos y comprender su proposito dentro del contexto de la salud publica global.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Objetivos -->
+                    <section id="objetivos" class="reveal mb-5">
+                        <div class="row g-4">
+                            <!-- Objetivo General -->
+                            <div class="col-md-6">
+                                <div class="card-custom p-4 h-100">
+                                    <div class="d-flex align-items-center gap-3 mb-4">
+                                        <div class="icon-box bg-primary bg-opacity-10">
+                                            <i class="bi bi-patch-check text-primary fs-5"></i>
+                                        </div>
+                                        <h3 class="h5 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Objetivo General</h3>
+                                    </div>
+                                    <div class="accent-bar mb-4"></div>
+                                    <p class="text-secondary mb-0" style="font-size: 0.9rem;">
+                                        Analizar un texto argumentativo mediante los niveles de comprension global, local y pragmatico para interpretar su contenido, estructura e intencion comunicativa.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Objetivos Específicos -->
+                            <div class="col-md-6">
+                                <div class="card-custom p-4 h-100">
+                                    <div class="d-flex align-items-center gap-3 mb-4">
+                                        <div class="icon-box" style="background: rgba(16, 185, 129, 0.1);">
+                                            <i class="bi bi-clipboard-check text-success fs-5"></i>
+                                        </div>
+                                        <h3 class="h5 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Objetivos Especificos</h3>
+                                    </div>
+                                    <div class="accent-bar mb-4"></div>
+                                    <ul class="list-unstyled mb-0 text-secondary" style="font-size: 0.9rem;">
+                                        <li class="d-flex align-items-start gap-3 mb-3">
+                                            <span class="accent-dot mt-2"></span>
+                                            <span>Identificar la idea principal y la tesis del texto seleccionado.</span>
+                                        </li>
+                                        <li class="d-flex align-items-start gap-3 mb-3">
+                                            <span class="accent-dot mt-2"></span>
+                                            <span>Reconocer los argumentos y estrategias discursivas presentes en el texto.</span>
+                                        </li>
+                                        <li class="d-flex align-items-start gap-3 mb-3">
+                                            <span class="accent-dot mt-2"></span>
+                                            <span>Interpretar la intencion comunicativa y el contexto de produccion.</span>
+                                        </li>
+                                        <li class="d-flex align-items-start gap-3">
+                                            <span class="accent-dot mt-2"></span>
+                                            <span>Analizar la dimension normativa y persuasiva del texto.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Texto Argumentativo -->
+                    <section id="texto-argumentativo" class="reveal mb-5">
+                        <div class="card-custom card-border-top p-4 p-md-5">
+                            <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon-box bg-primary bg-opacity-10">
+                                        <i class="bi bi-file-earmark-text text-primary fs-5"></i>
+                                    </div>
+                                    <div>
+                                        <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Texto Argumentativo</h2>
+                                        <p class="text-muted mb-0" style="font-size: 0.8rem;">Material de analisis</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Metadata -->
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge-custom">
+                                    <i class="bi bi-tag"></i>
+                                    Fuente: OMS
+                                </span>
+                                <span class="badge-custom">
+                                    <i class="bi bi-calendar"></i>
+                                    2020
+                                </span>
+                                <span class="badge-custom badge-success-custom">
+                                    <i class="bi bi-heart"></i>
+                                    Campana de Salud
+                                </span>
+                            </div>
+                            
+                            <div class="accent-bar mb-4"></div>
+                            
+                            <!-- Article -->
+                            <article>
+                                <h3 class="h4 fw-bold mb-3" style="font-family: 'Playfair Display', serif;">
+                                    Dia Mundial sin Tabaco: Llamamiento a la Accion
+                                </h3>
+                                <p class="text-muted mb-4" style="font-size: 0.7rem; letter-spacing: 0.1em;">ORGANIZACION MUNDIAL DE LA SALUD - 2020</p>
+                                
+                                <div class="text-secondary" style="font-size: 0.95rem;">
+                                    <p class="mb-4">
+                                        En este Dia Mundial sin Tabaco, la OMS lanza una campana de lucha contra la <strong class="text-dark">mercadotecnia sistematica, agresiva y sostenida</strong> que la industria tabacalera y otras industrias relacionadas utilizan para que una nueva generacion se enganche al consumo de sus productos.
+                                    </p>
+                                    
+                                    <p class="mb-4">
+                                        La campana mundial servira para <strong class="text-dark">desacreditar mitos y revelar las tacticas retorcidas</strong> empleadas por esas industrias. Proporcionara a los jovenes los conocimientos necesarios para detectar facilmente la manipulacion de esas industrias y les equipara con instrumentos para rechazar sus tacticas.
+                                    </p>
+                                    
+                                    <p class="mb-4">
+                                        Todo ello con miras a que adquieran <strong class="text-dark">capacidad de accion y decision</strong> para plantarles cara. La OMS hace un llamamiento a todos los jovenes para que se sumen a la lucha por convertirse en una generacion libre de tabaco.
+                                    </p>
+                                    
+                                    <div class="quote-block my-4">
+                                        <p class="mb-0">
+                                            "La campana reforzara la labor de la OMS de asistir a los paises para que apliquen intervenciones normativas eficaces con las que reducir la demanda de tabaco y para protegerse contra las tacticas de la industria que socavan los esfuerzos mundiales y nacionales destinados a que se apliquen politicas de control del tabaco basadas en pruebas."
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+                    
+                    <!-- Nivel Global -->
+                    <section id="nivel-global" class="reveal mb-5">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="icon-box float-animation" style="background: rgba(16, 185, 129, 0.1);">
+                                <span class="fw-bold text-success fs-5" style="font-family: 'Playfair Display', serif;">G</span>
+                            </div>
+                            <div>
+                                <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Nivel Global</h2>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Analisis macrotextual</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row g-4">
+                            <!-- Tema -->
+                            <div class="col-12">
+                                <div class="card-custom p-4">
+                                    <span class="section-label mb-3">
+                                        <span class="rounded-circle bg-success d-inline-block" style="width: 8px; height: 8px;"></span>
+                                        Tema
+                                    </span>
+                                    <p class="text-dark fw-medium mb-0">
+                                        Prevencion del consumo de tabaco y regulacion de las estrategias de mercadotecnia de la industria tabacalera.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Idea Principal -->
+                            <div class="col-12">
+                                <div class="card-custom p-4">
+                                    <span class="section-label mb-3">
+                                        <span class="rounded-circle bg-success d-inline-block" style="width: 8px; height: 8px;"></span>
+                                        Idea Principal
+                                    </span>
+                                    <p class="text-secondary mb-0" style="font-size: 0.9rem;">
+                                        La OMS promueve una campana mundial para <strong class="text-dark">proteger a los jovenes de la manipulacion de la industria tabacalera</strong> y reducir el consumo de tabaco mediante educacion y politicas de control.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Tesis -->
+                            <div class="col-12">
+                                <div class="card-custom card-border-left p-4">
+                                    <span class="section-label mb-3">
+                                        <span class="rounded-circle bg-success d-inline-block" style="width: 8px; height: 8px;"></span>
+                                        Tesis
+                                    </span>
+                                    <p class="text-dark fw-medium mb-0">
+                                        La implementacion de acciones educativas y normativas es fundamental para evitar la influencia de la industria tabacalera en los jovenes y promover una generacion libre de tabaco.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Nivel Local -->
+                    <section id="nivel-local" class="reveal mb-5">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="icon-box float-animation bg-primary bg-opacity-10">
+                                <span class="fw-bold text-primary fs-5" style="font-family: 'Playfair Display', serif;">L</span>
+                            </div>
+                            <div>
+                                <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Nivel Local</h2>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Analisis de los argumentos</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Ideas Principales -->
+                        <div class="card-custom p-4 mb-4">
+                            <h4 class="fw-semibold text-dark mb-4 d-flex align-items-center gap-2" style="font-size: 1rem;">
+                                <div class="rounded-lg bg-primary bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; border-radius: 8px;">
+                                    <i class="bi bi-list-check text-primary" style="font-size: 0.9rem;"></i>
+                                </div>
+                                Ideas Principales
+                            </h4>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3">
+                                        <span class="accent-dot mt-2"></span>
+                                        <span class="text-secondary" style="font-size: 0.9rem;">La OMS lanza una campana mundial en el Dia Mundial sin Tabaco.</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3">
+                                        <span class="accent-dot mt-2"></span>
+                                        <span class="text-secondary" style="font-size: 0.9rem;">Se denuncian las estrategias de mercadotecnia de la industria tabacalera.</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3">
+                                        <span class="accent-dot mt-2"></span>
+                                        <span class="text-secondary" style="font-size: 0.9rem;">Se busca educar a los jovenes para identificar la manipulacion.</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3">
+                                        <span class="accent-dot mt-2"></span>
+                                        <span class="text-secondary" style="font-size: 0.9rem;">Se promueve el rechazo al consumo de tabaco.</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3">
+                                        <span class="accent-dot mt-2"></span>
+                                        <span class="text-secondary" style="font-size: 0.9rem;">Se impulsan politicas publicas de control del tabaco.</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start gap-3">
+                                        <span class="accent-dot mt-2"></span>
+                                        <span class="text-secondary" style="font-size: 0.9rem;">Se involucra a diferentes actores sociales.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Argumentos -->
+                        <h4 class="fw-semibold text-dark mb-3" style="font-size: 1rem;">Argumentos Utilizados</h4>
+                        <div class="row g-4 mb-4">
+                            <!-- Argumento de Autoridad -->
+                            <div class="col-md-6">
+                                <div class="card-custom arg-card authority p-4">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="icon-box bg-primary bg-opacity-10">
+                                            <i class="bi bi-shield-check text-primary"></i>
+                                        </div>
+                                        <h5 class="fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Autoridad</h5>
+                                    </div>
+                                    <p class="text-primary mb-2" style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em;">ARGUMENTUM AD VERECUNDIAM</p>
+                                    <p class="text-secondary mb-0" style="font-size: 0.875rem;">
+                                        Respaldo de la <strong class="text-dark">OMS como organismo internacional</strong> con autoridad en materia de salud publica global.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Argumento Causa-Efecto -->
+                            <div class="col-md-6">
+                                <div class="card-custom arg-card cause p-4">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="icon-box" style="background: rgba(139, 92, 246, 0.1);">
+                                            <i class="bi bi-lightning-charge" style="color: #8b5cf6;"></i>
+                                        </div>
+                                        <h5 class="fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Causa-Efecto</h5>
+                                    </div>
+                                    <p class="mb-2" style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; color: #8b5cf6;">RELACION CAUSAL</p>
+                                    <p class="text-secondary mb-0" style="font-size: 0.875rem;">
+                                        La <strong class="text-dark">publicidad influye en el consumo juvenil</strong> de tabaco, estableciendo una relacion directa.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Argumento de Finalidad -->
+                            <div class="col-md-6">
+                                <div class="card-custom arg-card purpose p-4">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="icon-box" style="background: rgba(245, 158, 11, 0.1);">
+                                            <i class="bi bi-arrow-right-circle" style="color: #f59e0b;"></i>
+                                        </div>
+                                        <h5 class="fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Finalidad</h5>
+                                    </div>
+                                    <p class="mb-2" style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; color: #f59e0b;">ARGUMENTO TELEOLOGICO</p>
+                                    <p class="text-secondary mb-0" style="font-size: 0.875rem;">
+                                        La campana busca <strong class="text-dark">prevenir el consumo y proteger la salud</strong> de los jovenes.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Argumento Normativo -->
+                            <div class="col-md-6">
+                                <div class="card-custom arg-card normative p-4">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="icon-box" style="background: rgba(239, 68, 68, 0.1);">
+                                            <i class="bi bi-balance-scale" style="color: #ef4444;"></i>
+                                        </div>
+                                        <h5 class="fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Normativo</h5>
+                                    </div>
+                                    <p class="mb-2" style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; color: #ef4444;">VALORES Y DEBERES</p>
+                                    <p class="text-secondary mb-0" style="font-size: 0.875rem;">
+                                        Se proponen <strong class="text-dark">politicas publicas y regulaciones</strong> para controlar la industria.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Palabras Clave -->
+                        <div class="card-custom p-4">
+                            <h4 class="fw-semibold text-dark mb-3" style="font-size: 0.875rem;">Palabras Clave:</h4>
+                            <div class="d-flex flex-wrap">
+                                <span class="keyword-tag">mercadotecnia</span>
+                                <span class="keyword-tag">manipulacion</span>
+                                <span class="keyword-tag">industria tabacalera</span>
+                                <span class="keyword-tag">jovenes</span>
+                                <span class="keyword-tag">politicas publicas</span>
+                                <span class="keyword-tag">prevencion</span>
+                                <span class="keyword-tag">salud</span>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Nivel Pragmático -->
+                    <section id="nivel-pragmatico" class="reveal mb-5">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="icon-box float-animation" style="background: rgba(139, 92, 246, 0.1);">
+                                <span class="fw-bold fs-5" style="font-family: 'Playfair Display', serif; color: #8b5cf6;">P</span>
+                            </div>
+                            <div>
+                                <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Nivel Pragmatico</h2>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Analisis de la dimension comunicativa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row g-4 mb-4">
+                            <!-- Intención Comunicativa -->
+                            <div class="col-md-6">
+                                <div class="card-custom p-4 h-100">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="rounded-xl d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(244, 63, 94, 0.1); border-radius: 10px;">
+                                            <i class="bi bi-eye" style="color: #f43f5e;"></i>
+                                        </div>
+                                        <h5 class="fw-semibold text-dark mb-0">Intencion Comunicativa</h5>
+                                    </div>
+                                    <p class="text-secondary mb-0" style="font-size: 0.875rem;">
+                                        <strong class="text-dark">Informar, concientizar y persuadir</strong> sobre los riesgos del consumo de tabaco y la manipulacion de la industria tabacalera.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Público Objetivo -->
+                            <div class="col-md-6">
+                                <div class="card-custom p-4 h-100">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="rounded-xl d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(6, 182, 212, 0.1); border-radius: 10px;">
+                                            <i class="bi bi-people" style="color: #06b6d4;"></i>
+                                        </div>
+                                        <h5 class="fw-semibold text-dark mb-0">Publico Objetivo</h5>
+                                    </div>
+                                    <p class="text-secondary mb-0" style="font-size: 0.875rem;">
+                                        Principalmente <strong class="text-dark">jovenes</strong>, ademas de gobiernos, instituciones educativas y profesionales de la salud.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Contexto -->
+                            <div class="col-md-6">
+                                <div class="card-custom p-4 h-100">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="rounded-xl d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(99, 102, 241, 0.1); border-radius: 10px;">
+                                            <i class="bi bi-globe" style="color: #6366f1;"></i>
+                                        </div>
+                                        <h5 class="fw-semibold text-dark mb-0">Contexto</h5>
+                                    </div>
+                                    <p class="text-secondary mb-0" style="font-size: 0.875rem;">
+                                        Texto oficial de la <strong class="text-dark">OMS en el Dia Mundial sin Tabaco 2020</strong>, orientado a salud publica global.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Propósito -->
+                            <div class="col-md-6">
+                                <div class="card-custom p-4 h-100">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        <div class="rounded-xl d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(16, 185, 129, 0.1); border-radius: 10px;">
+                                            <i class="bi bi-check-circle" style="color: #10b981;"></i>
+                                        </div>
+                                        <h5 class="fw-semibold text-dark mb-0">Proposito</h5>
+                                    </div>
+                                    <p class="text-secondary mb-0" style="font-size: 0.875rem;">
+                                        Promover la <strong class="text-dark">reduccion del consumo de tabaco</strong> mundial mediante educacion y politicas publicas.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Dimensión Normativa -->
+                        <div class="card-custom p-4" style="border-left: 4px solid #8b5cf6;">
+                            <div class="d-flex align-items-center gap-2 mb-3">
+                                <i class="bi bi-award" style="color: #8b5cf6; font-size: 1.25rem;"></i>
+                                <h5 class="fw-semibold text-dark mb-0">Dimension Normativa</h5>
+                            </div>
+                            <p class="text-secondary mb-0" style="font-size: 0.875rem;">
+                                El texto no solo informa y persuade, sino que tambien orienta la <strong class="text-dark">implementacion de politicas publicas concretas</strong>, involucrando a gobiernos, escuelas, medios de comunicacion y sociedad civil para regular el consumo y la publicidad del tabaco.
+                            </p>
+                        </div>
+                    </section>
+                    
+                    <!-- Conclusión -->
+                    <section id="conclusion" class="reveal mb-5">
+                        <div class="card-custom card-border-top-emerald p-4 p-md-5">
+                            <div class="d-flex align-items-center gap-3 mb-4">
+                                <div class="icon-box" style="background: rgba(16, 185, 129, 0.1);">
+                                    <i class="bi bi-check2-square text-success fs-5"></i>
+                                </div>
+                                <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Conclusion</h2>
+                            </div>
+                            
+                            <div class="accent-bar mb-4"></div>
+                            
+                            <div class="text-secondary" style="font-size: 0.95rem;">
+                                <p class="mb-4">
+                                    El analisis del texto argumentativo de la Organizacion Mundial de la Salud permite evidenciar la <strong class="text-dark">importancia de las estrategias discursivas</strong> en la promocion de la salud publica.
+                                </p>
+                                
+                                <p class="mb-4">
+                                    La OMS utiliza su <strong class="text-dark">autoridad institucional</strong> para persuadir y concientizar sobre los riesgos del tabaco, al tiempo que propone acciones educativas y normativas para reducir su consumo.
+                                </p>
+                                
+                                <div class="key-point">
+                                    <p class="mb-0" style="font-size: 0.875rem;">
+                                        Este ejercicio fortalece la capacidad de <strong class="text-dark">comprension lectora critica</strong> al identificar la idea global, los argumentos locales y la intencion pragmatica del texto, destacando su caracter informativo, persuasivo y normativo dentro de un contexto global de prevencion.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Bibliografía -->
+                    <section id="bibliografia" class="reveal">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="icon-box bg-secondary bg-opacity-10">
+                                <i class="bi bi-journal-text text-secondary fs-5"></i>
+                            </div>
+                            <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Bibliografia</h2>
+                        </div>
+                        
+                        <div class="card-custom p-4 p-md-5">
+                            <p class="text-muted mb-4" style="font-size: 0.7rem; letter-spacing: 0.1em;">FORMATO APA 7a EDICION</p>
+                            
+                            <div class="d-flex gap-3 mb-4">
+                                <div class="flex-shrink-0 d-flex align-items-center justify-content-center rounded" style="width: 32px; height: 32px; background: rgba(0, 102, 204, 0.1);">
+                                    <span class="text-primary fw-bold" style="font-size: 0.8rem;">1</span>
+                                </div>
+                                <div class="text-secondary" style="font-size: 0.9rem;">
+                                    Organizacion Mundial de la Salud. (2020). <em>Dia Mundial sin Tabaco: llamamiento a la accion.</em><br>
+                                    <a href="https://www.who.int/es/campaigns/world-no-tobacco-day/world-no-tobacco-day-2020/call-to-action" target="_blank" rel="noopener noreferrer" class="bib-link">
+                                        https://www.who.int/es/campaigns/world-no-tobacco-day/world-no-tobacco-day-2020/call-to-action
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex gap-3">
+                                <div class="flex-shrink-0 d-flex align-items-center justify-content-center rounded" style="width: 32px; height: 32px; background: rgba(0, 102, 204, 0.1);">
+                                    <span class="text-primary fw-bold" style="font-size: 0.8rem;">2</span>
+                                </div>
+                                <div class="text-secondary" style="font-size: 0.9rem;">
+                                    Bracho Perez, K. J. (2020). <em>Estrategias de comprension e interpretacion de textos argumentativos en estudiantes de educacion superior.</em><br>
+                                    <a href="https://doi.org/10.15658/rev.electron.educ.pedagog20.05040605" target="_blank" rel="noopener noreferrer" class="bib-link">
+                                        https://doi.org/10.15658/rev.electron.educ.pedagog20.05040605
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer-custom text-white py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="mb-4">
+                        <div class="logo-icon mx-auto mb-3">
+                            <i class="bi bi-book text-white"></i>
+                        </div>
+                        <p class="fw-medium mb-1">Universidad de Cartagena</p>
+                        <p class="text-white-50 mb-0" style="font-size: 0.875rem;">Comprension y Produccion de Textos I</p>
+                    </div>
+                    <div class="d-flex justify-content-center mb-3">
+                        <span class="badge-custom badge-success-custom">
+                            <i class="bi bi-check-circle"></i>
+                            Unidad 3 - Textos Argumentativos
+                        </span>
+                    </div>
+                    <p class="text-white-50 mb-0" style="font-size: 0.75rem;">Luisi, Bleider, Arianny, Andris</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // === DOM Elements ===
+        const navbar = document.getElementById('navbar');
+        const progressBar = document.getElementById('progressBar');
+        const navLinks = document.querySelectorAll('.navbar-custom .nav-link');
+        const sections = document.querySelectorAll('section[id]');
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        // === Progress Bar ===
+        function updateProgressBar() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = Math.max(0, Math.min(100, (scrollTop / docHeight) * 100));
+            progressBar.style.width = scrollPercent + '%';
+        }
+        
+        // === Navbar Scroll Effect ===
+        function handleNavbarScroll() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+        
+        // === Active Navigation Link ===
+        function updateActiveNavLink() {
+            const scrollPosition = window.scrollY + 120;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + sectionId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+        
+        // === Scroll Reveal with Stagger ===
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('active');
+                    }, index * 100);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -80px 0px'
+        });
+        
+        revealElements.forEach(el => revealObserver.observe(el));
+        
+        // === Event Listeners ===
+        window.addEventListener('scroll', () => {
+            updateProgressBar();
+            handleNavbarScroll();
+            updateActiveNavLink();
+        });
+        
+        // === Respect prefers-reduced-motion ===
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        
+        if (prefersReducedMotion.matches) {
+            revealElements.forEach(el => {
+                el.classList.add('active');
+            });
+        }
+        
+        // === Initial Calls ===
+        updateProgressBar();
+        handleNavbarScroll();
+        
+        // === Close mobile menu on link click ===
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navbarCollapse.classList.contains('show')) {
+                    navbarToggler.click();
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
