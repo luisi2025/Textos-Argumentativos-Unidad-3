@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprension e Interpretacion de Textos Argumentativos</title>
+    <title>Comprensión e Interpretación de Textos Argumentativos</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +32,9 @@
             --border: #e5e7eb;
             --success: #10b981;
             --success-light: #34d399;
+            --purple: #8b5cf6;
+            --amber: #f59e0b;
+            --rose: #f43f5e;
         }
         
         /* === Base Styles === */
@@ -242,6 +245,10 @@
             border-left: 4px solid var(--success);
         }
         
+        .card-border-left-purple {
+            border-left: 4px solid var(--purple);
+        }
+        
         /* === Accent Elements === */
         .accent-bar {
             width: 60px;
@@ -425,6 +432,25 @@
             background: linear-gradient(180deg, var(--accent), var(--success));
         }
         
+        /* === Interpretation Box === */
+        .interpretation-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.04), rgba(0, 102, 204, 0.04));
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            position: relative;
+        }
+        
+        .interpretation-box::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--purple), var(--accent));
+        }
+        
         /* === Argument Cards === */
         .arg-card {
             border-left: 4px solid;
@@ -564,7 +590,7 @@
     <div class="progress-bar-custom" id="progressBar" style="width: 0%;"></div>
     
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="navbar" role="navigation" aria-label="Navegacion principal">
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="navbar" role="navigation" aria-label="Navegación principal">
         <div class="container">
             <!-- Logo -->
             <a class="navbar-brand d-flex align-items-center gap-2" href="#">
@@ -573,7 +599,7 @@
                 </div>
                 <div class="d-none d-sm-block">
                     <span class="fw-semibold text-dark fs-5" style="font-family: 'Playfair Display', serif;">Universidad de Cartagena</span>
-                    <p class="text-muted mb-0" style="font-size: 0.7rem; margin-top: -2px;">NextCode</p>
+                    <p class="text-muted mb-0" style="font-size: 0.7rem; margin-top: -2px;">Educación Superior</p>
                 </div>
             </a>
             
@@ -586,7 +612,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-lg-center gap-1">
                     <li class="nav-item">
-                        <a class="nav-link" href="#introduccion">Introduccion</a>
+                        <a class="nav-link" href="#introduccion">Introducción</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#objetivos">Objetivos</a>
@@ -601,13 +627,13 @@
                         <a class="nav-link" href="#nivel-local">Nivel Local</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#nivel-pragmatico">Nivel Pragmatico</a>
+                        <a class="nav-link" href="#nivel-pragmatico">Nivel Pragmático</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#conclusion">Conclusion</a>
+                        <a class="nav-link" href="#conclusion">Conclusión</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#bibliografia">Bibliografia</a>
+                        <a class="nav-link" href="#bibliografia">Bibliografía</a>
                     </li>
                 </ul>
             </div>
@@ -627,11 +653,11 @@
                 </div>
                 
                 <!-- Unit -->
-                <p class="text-muted mb-2" style="font-size: 0.875rem;">Unidad 3 - Comprension y Produccion de Textos I</p>
+                <p class="text-muted mb-2" style="font-size: 0.875rem;">Unidad 3 - Comprensión y Producción de Textos I</p>
                 
                 <!-- Title -->
                 <h1 class="display-5 fw-bold mb-4 px-2" style="font-family: 'Playfair Display', serif;">
-                    Comprension e Interpretacion de
+                    Comprensión e Interpretación de
                     <span class="text-primary">Textos Argumentativos</span>
                 </h1>
                 
@@ -650,7 +676,7 @@
                                 <div class="student-avatar">
                                     <span>L</span>
                                 </div>
-                                <p class="student-name">Luisi Castro Saucedo</p>
+                                <p class="student-name">Luisi</p>
                                 <p class="text-muted mb-0" style="font-size: 0.75rem;">Estudiante</p>
                             </div>
                         </div>
@@ -661,7 +687,7 @@
                                 <div class="student-avatar">
                                     <span>B</span>
                                 </div>
-                                <p class="student-name">Bleider Acuña Lerma</p>
+                                <p class="student-name">Bleider</p>
                                 <p class="text-muted mb-0" style="font-size: 0.75rem;">Estudiante</p>
                             </div>
                         </div>
@@ -672,7 +698,7 @@
                                 <div class="student-avatar">
                                     <span>A</span>
                                 </div>
-                                <p class="student-name">Arianny Torres Lopez</p>
+                                <p class="student-name">Arianny</p>
                                 <p class="text-muted mb-0" style="font-size: 0.75rem;">Estudiante</p>
                             </div>
                         </div>
@@ -683,7 +709,7 @@
                                 <div class="student-avatar">
                                     <span>A</span>
                                 </div>
-                                <p class="student-name">Andris Paola Melendez</p>
+                                <p class="student-name">Andris</p>
                                 <p class="text-muted mb-0" style="font-size: 0.75rem;">Estudiante</p>
                             </div>
                         </div>
@@ -706,24 +732,24 @@
                                 <div class="icon-box bg-primary bg-opacity-10">
                                     <i class="bi bi-book text-primary fs-5"></i>
                                 </div>
-                                <h2 class="h2 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Introduccion</h2>
+                                <h2 class="h2 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Introducción</h2>
                             </div>
                             
                             <div class="accent-bar mb-4"></div>
                             
                             <div class="text-secondary">
                                 <p class="mb-4">
-                                    La comprension e interpretacion de textos argumentativos constituye una <strong class="text-dark">competencia fundamental</strong> en el ambito academico, ya que permite desarrollar habilidades de lectura critica, analisis de ideas y reconocimiento de la intencion comunicativa de los autores.
+                                    La comprensión e interpretación de textos argumentativos constituye una <strong class="text-dark">competencia fundamental</strong> en el ámbito académico, ya que permite desarrollar habilidades de lectura crítica, análisis de ideas y reconocimiento de la intención comunicativa de los autores.
                                 </p>
                                 
                                 <p class="mb-4">
-                                    En este sentido, la presente actividad se centra en el analisis de un texto argumentativo emitido por la <strong class="text-dark">Organizacion Mundial de la Salud (OMS)</strong>, relacionado con la campana del Dia Mundial sin Tabaco 2020.
+                                    En este sentido, la presente actividad se centra en el análisis de un texto argumentativo emitido por la <strong class="text-dark">Organización Mundial de la Salud (OMS)</strong>, relacionado con la influencia de la industria tabacalera en los jóvenes en el marco del Día Mundial sin Tabaco 2020.
                                 </p>
                                 
                                 <div class="key-point mt-4">
-                                    <p class="fw-semibold text-dark mb-2" style="font-size: 0.875rem;">Enfoque del analisis:</p>
+                                    <p class="fw-semibold text-dark mb-2" style="font-size: 0.875rem;">Enfoque del análisis:</p>
                                     <p class="mb-0" style="font-size: 0.875rem;">
-                                        A traves de los niveles de analisis <strong class="text-dark">global, local y pragmatico</strong>, se busca interpretar el mensaje del texto, identificar sus argumentos y comprender su proposito dentro del contexto de la salud publica global.
+                                        A través de los niveles de análisis <strong class="text-dark">global, local y pragmático</strong>, se busca no solo identificar los elementos del texto, sino también interpretar su significado, sus estrategias discursivas y su impacto dentro del contexto de la salud pública global.
                                     </p>
                                 </div>
                             </div>
@@ -744,7 +770,7 @@
                                     </div>
                                     <div class="accent-bar mb-4"></div>
                                     <p class="text-secondary mb-0" style="font-size: 0.9rem;">
-                                        Analizar un texto argumentativo mediante los niveles de comprension global, local y pragmatico para interpretar su contenido, estructura e intencion comunicativa.
+                                        Analizar un texto argumentativo mediante los niveles de comprensión global, local y pragmático para interpretar su contenido, estructura e intención comunicativa.
                                     </p>
                                 </div>
                             </div>
@@ -756,7 +782,7 @@
                                         <div class="icon-box" style="background: rgba(16, 185, 129, 0.1);">
                                             <i class="bi bi-clipboard-check text-success fs-5"></i>
                                         </div>
-                                        <h3 class="h5 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Objetivos Especificos</h3>
+                                        <h3 class="h5 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Objetivos Específicos</h3>
                                     </div>
                                     <div class="accent-bar mb-4"></div>
                                     <ul class="list-unstyled mb-0 text-secondary" style="font-size: 0.9rem;">
@@ -770,11 +796,11 @@
                                         </li>
                                         <li class="d-flex align-items-start gap-3 mb-3">
                                             <span class="accent-dot mt-2"></span>
-                                            <span>Interpretar la intencion comunicativa y el contexto de produccion.</span>
+                                            <span>Interpretar la intención comunicativa y el contexto de producción.</span>
                                         </li>
                                         <li class="d-flex align-items-start gap-3">
                                             <span class="accent-dot mt-2"></span>
-                                            <span>Analizar la dimension normativa y persuasiva del texto.</span>
+                                            <span>Analizar la dimensión normativa y persuasiva del texto en relación con políticas de salud pública.</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -792,7 +818,7 @@
                                     </div>
                                     <div>
                                         <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Texto Argumentativo</h2>
-                                        <p class="text-muted mb-0" style="font-size: 0.8rem;">Material de analisis</p>
+                                        <p class="text-muted mb-0" style="font-size: 0.8rem;">Material de análisis</p>
                                     </div>
                                 </div>
                             </div>
@@ -809,7 +835,7 @@
                                 </span>
                                 <span class="badge-custom badge-success-custom">
                                     <i class="bi bi-heart"></i>
-                                    Campana de Salud
+                                    Campaña de Salud
                                 </span>
                             </div>
                             
@@ -818,28 +844,39 @@
                             <!-- Article -->
                             <article>
                                 <h3 class="h4 fw-bold mb-3" style="font-family: 'Playfair Display', serif;">
-                                    Dia Mundial sin Tabaco: Llamamiento a la Accion
+                                    Día Mundial sin Tabaco: Llamamiento a la Acción
                                 </h3>
-                                <p class="text-muted mb-4" style="font-size: 0.7rem; letter-spacing: 0.1em;">ORGANIZACION MUNDIAL DE LA SALUD - 2020</p>
+                                <p class="text-muted mb-4" style="font-size: 0.7rem; letter-spacing: 0.1em;">ORGANIZACIÓN MUNDIAL DE LA SALUD - 2020</p>
                                 
                                 <div class="text-secondary" style="font-size: 0.95rem;">
                                     <p class="mb-4">
-                                        En este Dia Mundial sin Tabaco, la OMS lanza una campana de lucha contra la <strong class="text-dark">mercadotecnia sistematica, agresiva y sostenida</strong> que la industria tabacalera y otras industrias relacionadas utilizan para que una nueva generacion se enganche al consumo de sus productos.
+                                        En este Día Mundial sin Tabaco, la OMS lanza una campaña de lucha contra la <strong class="text-dark">mercadotecnia sistemática, agresiva y sostenida</strong> que la industria tabacalera y otras industrias relacionadas utilizan para que una nueva generación se enganche al consumo de sus productos.
                                     </p>
                                     
                                     <p class="mb-4">
-                                        La campana mundial servira para <strong class="text-dark">desacreditar mitos y revelar las tacticas retorcidas</strong> empleadas por esas industrias. Proporcionara a los jovenes los conocimientos necesarios para detectar facilmente la manipulacion de esas industrias y les equipara con instrumentos para rechazar sus tacticas.
+                                        La campaña mundial servirá para <strong class="text-dark">desacreditar mitos y revelar las tácticas retorcidas</strong> empleadas por esas industrias. Proporcionará a los jóvenes los conocimientos necesarios para detectar fácilmente la manipulación de esas industrias y les equipará con instrumentos para rechazar sus tácticas, todo ello con miras a que adquieran capacidad de acción y decisión para plantarles cara.
                                     </p>
                                     
                                     <p class="mb-4">
-                                        Todo ello con miras a que adquieran <strong class="text-dark">capacidad de accion y decision</strong> para plantarles cara. La OMS hace un llamamiento a todos los jovenes para que se sumen a la lucha por convertirse en una generacion libre de tabaco.
+                                        La OMS hace un llamamiento a todos los jóvenes para que se sumen a la lucha por convertirse en una <strong class="text-dark">generación libre de tabaco</strong>.
                                     </p>
                                     
                                     <div class="quote-block my-4">
                                         <p class="mb-0">
-                                            "La campana reforzara la labor de la OMS de asistir a los paises para que apliquen intervenciones normativas eficaces con las que reducir la demanda de tabaco y para protegerse contra las tacticas de la industria que socavan los esfuerzos mundiales y nacionales destinados a que se apliquen politicas de control del tabaco basadas en pruebas."
+                                            "La campaña reforzará la labor de la OMS de asistir a los países para que apliquen intervenciones normativas eficaces con las que reducir la demanda de tabaco y para protegerse contra las tácticas de la industria que socavan los esfuerzos mundiales y nacionales destinados a que se apliquen políticas de control del tabaco basadas en pruebas."
                                         </p>
                                     </div>
+                                </div>
+                                
+                                <!-- Tesis -->
+                                <div class="card-custom card-border-left p-4 mt-4" style="border-left-color: var(--accent);">
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                        <i class="bi bi-lightbulb text-primary"></i>
+                                        <h4 class="fw-semibold text-dark mb-0" style="font-size: 1rem;">Tesis</h4>
+                                    </div>
+                                    <p class="text-dark fw-medium mb-0" style="font-size: 0.95rem;">
+                                        La implementación de acciones educativas y normativas es fundamental para evitar la influencia de la industria tabacalera en los jóvenes y promover una generación libre de tabaco.
+                                    </p>
                                 </div>
                             </article>
                         </div>
@@ -853,7 +890,7 @@
                             </div>
                             <div>
                                 <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Nivel Global</h2>
-                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Analisis macrotextual</p>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Análisis macrotextual</p>
                             </div>
                         </div>
                         
@@ -866,7 +903,7 @@
                                         Tema
                                     </span>
                                     <p class="text-dark fw-medium mb-0">
-                                        Prevencion del consumo de tabaco y regulacion de las estrategias de mercadotecnia de la industria tabacalera.
+                                        Prevención del consumo de tabaco y regulación de las estrategias de mercadotecnia de la industria tabacalera.
                                     </p>
                                 </div>
                             </div>
@@ -879,20 +916,20 @@
                                         Idea Principal
                                     </span>
                                     <p class="text-secondary mb-0" style="font-size: 0.9rem;">
-                                        La OMS promueve una campana mundial para <strong class="text-dark">proteger a los jovenes de la manipulacion de la industria tabacalera</strong> y reducir el consumo de tabaco mediante educacion y politicas de control.
+                                        La OMS promueve una campaña mundial para <strong class="text-dark">proteger a los jóvenes de la manipulación de la industria tabacalera</strong> y reducir el consumo mediante educación y políticas de control.
                                     </p>
                                 </div>
                             </div>
                             
-                            <!-- Tesis -->
+                            <!-- Interpretación -->
                             <div class="col-12">
-                                <div class="card-custom card-border-left p-4">
-                                    <span class="section-label mb-3">
-                                        <span class="rounded-circle bg-success d-inline-block" style="width: 8px; height: 8px;"></span>
-                                        Tesis
-                                    </span>
-                                    <p class="text-dark fw-medium mb-0">
-                                        La implementacion de acciones educativas y normativas es fundamental para evitar la influencia de la industria tabacalera en los jovenes y promover una generacion libre de tabaco.
+                                <div class="interpretation-box">
+                                    <div class="d-flex align-items-center gap-2 mb-3">
+                                        <i class="bi bi-eye" style="color: var(--purple);"></i>
+                                        <span class="section-label" style="color: var(--purple);">Interpretación</span>
+                                    </div>
+                                    <p class="text-secondary mb-0" style="font-size: 0.9rem;">
+                                        Esto permite comprender que el texto no solo informa sobre una problemática, sino que <strong class="text-dark">adopta una postura crítica</strong> frente a la industria tabacalera, orientando al lector hacia la necesidad de implementar acciones que contrarresten su influencia.
                                     </p>
                                 </div>
                             </div>
@@ -907,7 +944,7 @@
                             </div>
                             <div>
                                 <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Nivel Local</h2>
-                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Analisis de los argumentos</p>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Análisis de los argumentos</p>
                             </div>
                         </div>
                         
@@ -919,48 +956,28 @@
                                 </div>
                                 Ideas Principales
                             </h4>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <span class="accent-dot mt-2"></span>
-                                        <span class="text-secondary" style="font-size: 0.9rem;">La OMS lanza una campana mundial en el Dia Mundial sin Tabaco.</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <span class="accent-dot mt-2"></span>
-                                        <span class="text-secondary" style="font-size: 0.9rem;">Se denuncian las estrategias de mercadotecnia de la industria tabacalera.</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <span class="accent-dot mt-2"></span>
-                                        <span class="text-secondary" style="font-size: 0.9rem;">Se busca educar a los jovenes para identificar la manipulacion.</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <span class="accent-dot mt-2"></span>
-                                        <span class="text-secondary" style="font-size: 0.9rem;">Se promueve el rechazo al consumo de tabaco.</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <span class="accent-dot mt-2"></span>
-                                        <span class="text-secondary" style="font-size: 0.9rem;">Se impulsan politicas publicas de control del tabaco.</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <span class="accent-dot mt-2"></span>
-                                        <span class="text-secondary" style="font-size: 0.9rem;">Se involucra a diferentes actores sociales.</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <p class="text-secondary" style="font-size: 0.9rem;">
+                                El texto presenta el lanzamiento de una campaña mundial, denuncia las estrategias de mercadotecnia de la industria tabacalera y plantea la necesidad de educar a los jóvenes para que identifiquen la manipulación. Además, promueve el rechazo al consumo y la implementación de políticas públicas, involucrando a distintos actores sociales.
+                            </p>
                         </div>
                         
                         <!-- Argumentos -->
-                        <h4 class="fw-semibold text-dark mb-3" style="font-size: 1rem;">Argumentos Utilizados</h4>
+                        <h4 class="fw-semibold text-dark mb-3" style="font-size: 1rem;">Argumentos</h4>
+                        <div class="card-custom p-4 mb-4">
+                            <div class="text-secondary" style="font-size: 0.9rem;">
+                                <p class="mb-3">
+                                    Se emplea un <strong class="text-dark">argumento de autoridad</strong> al estar respaldado por la OMS, lo cual fortalece la credibilidad del mensaje.
+                                </p>
+                                <p class="mb-3">
+                                    También se presenta un <strong class="text-dark">argumento de causa-efecto</strong> al relacionar la publicidad con el consumo juvenil, así como un <strong class="text-dark">argumento de finalidad</strong> orientado a la prevención.
+                                </p>
+                                <p class="mb-0">
+                                    Finalmente, se evidencia un <strong class="text-dark">argumento normativo</strong> al proponer regulaciones, lo que refuerza el carácter persuasivo del texto.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Argumentos Cards -->
                         <div class="row g-4 mb-4">
                             <!-- Argumento de Autoridad -->
                             <div class="col-md-6">
@@ -973,7 +990,7 @@
                                     </div>
                                     <p class="text-primary mb-2" style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em;">ARGUMENTUM AD VERECUNDIAM</p>
                                     <p class="text-secondary mb-0" style="font-size: 0.875rem;">
-                                        Respaldo de la <strong class="text-dark">OMS como organismo internacional</strong> con autoridad en materia de salud publica global.
+                                        Respaldado por la <strong class="text-dark">OMS</strong>, fortalece la credibilidad del mensaje.
                                     </p>
                                 </div>
                             </div>
@@ -987,9 +1004,9 @@
                                         </div>
                                         <h5 class="fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Causa-Efecto</h5>
                                     </div>
-                                    <p class="mb-2" style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; color: #8b5cf6;">RELACION CAUSAL</p>
+                                    <p class="mb-2" style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; color: #8b5cf6;">RELACIÓN CAUSAL</p>
                                     <p class="text-secondary mb-0" style="font-size: 0.875rem;">
-                                        La <strong class="text-dark">publicidad influye en el consumo juvenil</strong> de tabaco, estableciendo una relacion directa.
+                                        Relaciona la <strong class="text-dark">publicidad con el consumo juvenil</strong> de tabaco.
                                     </p>
                                 </div>
                             </div>
@@ -1003,9 +1020,9 @@
                                         </div>
                                         <h5 class="fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Finalidad</h5>
                                     </div>
-                                    <p class="mb-2" style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; color: #f59e0b;">ARGUMENTO TELEOLOGICO</p>
+                                    <p class="mb-2" style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; color: #f59e0b;">ARGUMENTO TELEOLÓGICO</p>
                                     <p class="text-secondary mb-0" style="font-size: 0.875rem;">
-                                        La campana busca <strong class="text-dark">prevenir el consumo y proteger la salud</strong> de los jovenes.
+                                        Orientado a la <strong class="text-dark">prevención</strong> y protección de los jóvenes.
                                     </p>
                                 </div>
                             </div>
@@ -1021,7 +1038,7 @@
                                     </div>
                                     <p class="mb-2" style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; color: #ef4444;">VALORES Y DEBERES</p>
                                     <p class="text-secondary mb-0" style="font-size: 0.875rem;">
-                                        Se proponen <strong class="text-dark">politicas publicas y regulaciones</strong> para controlar la industria.
+                                        Propone <strong class="text-dark">regulaciones</strong>, reforzando el carácter persuasivo.
                                     </p>
                                 </div>
                             </div>
@@ -1032,11 +1049,11 @@
                             <h4 class="fw-semibold text-dark mb-3" style="font-size: 0.875rem;">Palabras Clave:</h4>
                             <div class="d-flex flex-wrap">
                                 <span class="keyword-tag">mercadotecnia</span>
-                                <span class="keyword-tag">manipulacion</span>
+                                <span class="keyword-tag">manipulación</span>
                                 <span class="keyword-tag">industria tabacalera</span>
-                                <span class="keyword-tag">jovenes</span>
-                                <span class="keyword-tag">politicas publicas</span>
-                                <span class="keyword-tag">prevencion</span>
+                                <span class="keyword-tag">jóvenes</span>
+                                <span class="keyword-tag">políticas públicas</span>
+                                <span class="keyword-tag">prevención</span>
                                 <span class="keyword-tag">salud</span>
                             </div>
                         </div>
@@ -1049,8 +1066,8 @@
                                 <span class="fw-bold fs-5" style="font-family: 'Playfair Display', serif; color: #8b5cf6;">P</span>
                             </div>
                             <div>
-                                <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Nivel Pragmatico</h2>
-                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Analisis de la dimension comunicativa</p>
+                                <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Nivel Pragmático</h2>
+                                <p class="text-muted mb-0" style="font-size: 0.8rem;">Análisis de la dimensión comunicativa</p>
                             </div>
                         </div>
                         
@@ -1060,12 +1077,12 @@
                                 <div class="card-custom p-4 h-100">
                                     <div class="d-flex align-items-center gap-3 mb-3">
                                         <div class="rounded-xl d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(244, 63, 94, 0.1); border-radius: 10px;">
-                                            <i class="bi bi-eye" style="color: #f43f5e;"></i>
+                                            <i class="bi bi-chat-heart" style="color: #f43f5e;"></i>
                                         </div>
-                                        <h5 class="fw-semibold text-dark mb-0">Intencion Comunicativa</h5>
+                                        <h5 class="fw-semibold text-dark mb-0">Intención Comunicativa</h5>
                                     </div>
                                     <p class="text-secondary mb-0" style="font-size: 0.875rem;">
-                                        <strong class="text-dark">Informar, concientizar y persuadir</strong> sobre los riesgos del consumo de tabaco y la manipulacion de la industria tabacalera.
+                                        <strong class="text-dark">Persuadir, informar y generar conciencia</strong> sobre los riesgos del consumo de tabaco.
                                     </p>
                                 </div>
                             </div>
@@ -1077,10 +1094,10 @@
                                         <div class="rounded-xl d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(6, 182, 212, 0.1); border-radius: 10px;">
                                             <i class="bi bi-people" style="color: #06b6d4;"></i>
                                         </div>
-                                        <h5 class="fw-semibold text-dark mb-0">Publico Objetivo</h5>
+                                        <h5 class="fw-semibold text-dark mb-0">Público Objetivo</h5>
                                     </div>
                                     <p class="text-secondary mb-0" style="font-size: 0.875rem;">
-                                        Principalmente <strong class="text-dark">jovenes</strong>, ademas de gobiernos, instituciones educativas y profesionales de la salud.
+                                        Principalmente <strong class="text-dark">jóvenes</strong>, además de gobiernos, instituciones educativas y sociedad en general.
                                     </p>
                                 </div>
                             </div>
@@ -1095,7 +1112,7 @@
                                         <h5 class="fw-semibold text-dark mb-0">Contexto</h5>
                                     </div>
                                     <p class="text-secondary mb-0" style="font-size: 0.875rem;">
-                                        Texto oficial de la <strong class="text-dark">OMS en el Dia Mundial sin Tabaco 2020</strong>, orientado a salud publica global.
+                                        Campaña global de la <strong class="text-dark">OMS en el Día Mundial sin Tabaco 2020</strong>.
                                     </p>
                                 </div>
                             </div>
@@ -1107,23 +1124,23 @@
                                         <div class="rounded-xl d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: rgba(16, 185, 129, 0.1); border-radius: 10px;">
                                             <i class="bi bi-check-circle" style="color: #10b981;"></i>
                                         </div>
-                                        <h5 class="fw-semibold text-dark mb-0">Proposito</h5>
+                                        <h5 class="fw-semibold text-dark mb-0">Propósito</h5>
                                     </div>
                                     <p class="text-secondary mb-0" style="font-size: 0.875rem;">
-                                        Promover la <strong class="text-dark">reduccion del consumo de tabaco</strong> mundial mediante educacion y politicas publicas.
+                                        Promover la <strong class="text-dark">reducción del consumo de tabaco</strong> mediante estrategias educativas, preventivas y normativas.
                                     </p>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Dimensión Normativa -->
-                        <div class="card-custom p-4" style="border-left: 4px solid #8b5cf6;">
+                        <!-- Interpretación Pragmática -->
+                        <div class="interpretation-box">
                             <div class="d-flex align-items-center gap-2 mb-3">
-                                <i class="bi bi-award" style="color: #8b5cf6; font-size: 1.25rem;"></i>
-                                <h5 class="fw-semibold text-dark mb-0">Dimension Normativa</h5>
+                                <i class="bi bi-lightbulb" style="color: var(--purple);"></i>
+                                <span class="section-label" style="color: var(--purple);">Interpretación</span>
                             </div>
-                            <p class="text-secondary mb-0" style="font-size: 0.875rem;">
-                                El texto no solo informa y persuade, sino que tambien orienta la <strong class="text-dark">implementacion de politicas publicas concretas</strong>, involucrando a gobiernos, escuelas, medios de comunicacion y sociedad civil para regular el consumo y la publicidad del tabaco.
+                            <p class="text-secondary mb-0" style="font-size: 0.9rem;">
+                                Esto evidencia que el texto no solo transmite información, sino que busca <strong class="text-dark">influir en el comportamiento social</strong> y en la toma de decisiones, reforzando su carácter persuasivo y su impacto en la salud pública.
                             </p>
                         </div>
                     </section>
@@ -1135,14 +1152,14 @@
                                 <div class="icon-box" style="background: rgba(16, 185, 129, 0.1);">
                                     <i class="bi bi-check2-square text-success fs-5"></i>
                                 </div>
-                                <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Conclusion</h2>
+                                <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Conclusión</h2>
                             </div>
                             
                             <div class="accent-bar mb-4"></div>
                             
                             <div class="text-secondary" style="font-size: 0.95rem;">
                                 <p class="mb-4">
-                                    El analisis del texto argumentativo de la Organizacion Mundial de la Salud permite evidenciar la <strong class="text-dark">importancia de las estrategias discursivas</strong> en la promocion de la salud publica.
+                                    El análisis del texto argumentativo de la Organización Mundial de la Salud permite evidenciar la <strong class="text-dark">importancia de las estrategias discursivas</strong> en la promoción de la salud pública.
                                 </p>
                                 
                                 <p class="mb-4">
@@ -1151,7 +1168,7 @@
                                 
                                 <div class="key-point">
                                     <p class="mb-0" style="font-size: 0.875rem;">
-                                        Este ejercicio fortalece la capacidad de <strong class="text-dark">comprension lectora critica</strong> al identificar la idea global, los argumentos locales y la intencion pragmatica del texto, destacando su caracter informativo, persuasivo y normativo dentro de un contexto global de prevencion.
+                                        Asimismo, este ejercicio fortalece la capacidad de <strong class="text-dark">comprensión lectora crítica</strong> al identificar la idea global, los argumentos locales y la intención pragmática del texto, destacando su carácter informativo, persuasivo y normativo dentro de un contexto global de prevención.
                                     </p>
                                 </div>
                             </div>
@@ -1164,18 +1181,18 @@
                             <div class="icon-box bg-secondary bg-opacity-10">
                                 <i class="bi bi-journal-text text-secondary fs-5"></i>
                             </div>
-                            <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Bibliografia</h2>
+                            <h2 class="h3 fw-bold mb-0" style="font-family: 'Playfair Display', serif;">Bibliografía</h2>
                         </div>
                         
                         <div class="card-custom p-4 p-md-5">
-                            <p class="text-muted mb-4" style="font-size: 0.7rem; letter-spacing: 0.1em;">FORMATO APA 7a EDICION</p>
+                            <p class="text-muted mb-4" style="font-size: 0.7rem; letter-spacing: 0.1em;">FORMATO APA 7ª EDICIÓN</p>
                             
                             <div class="d-flex gap-3 mb-4">
                                 <div class="flex-shrink-0 d-flex align-items-center justify-content-center rounded" style="width: 32px; height: 32px; background: rgba(0, 102, 204, 0.1);">
                                     <span class="text-primary fw-bold" style="font-size: 0.8rem;">1</span>
                                 </div>
                                 <div class="text-secondary" style="font-size: 0.9rem;">
-                                    Organizacion Mundial de la Salud. (2020). <em>Dia Mundial sin Tabaco: llamamiento a la accion.</em><br>
+                                    Organización Mundial de la Salud. (2020). <em>Día Mundial sin Tabaco: llamamiento a la acción.</em><br>
                                     <a href="https://www.who.int/es/campaigns/world-no-tobacco-day/world-no-tobacco-day-2020/call-to-action" target="_blank" rel="noopener noreferrer" class="bib-link">
                                         https://www.who.int/es/campaigns/world-no-tobacco-day/world-no-tobacco-day-2020/call-to-action
                                     </a>
@@ -1187,7 +1204,7 @@
                                     <span class="text-primary fw-bold" style="font-size: 0.8rem;">2</span>
                                 </div>
                                 <div class="text-secondary" style="font-size: 0.9rem;">
-                                    Bracho Perez, K. J. (2020). <em>Estrategias de comprension e interpretacion de textos argumentativos en estudiantes de educacion superior.</em><br>
+                                    Bracho Pérez, K. J. (2020). <em>Estrategias de comprensión e interpretación de textos argumentativos en estudiantes de educación superior.</em><br>
                                     <a href="https://doi.org/10.15658/rev.electron.educ.pedagog20.05040605" target="_blank" rel="noopener noreferrer" class="bib-link">
                                         https://doi.org/10.15658/rev.electron.educ.pedagog20.05040605
                                     </a>
@@ -1211,7 +1228,7 @@
                             <i class="bi bi-book text-white"></i>
                         </div>
                         <p class="fw-medium mb-1">Universidad de Cartagena</p>
-                        <p class="text-white-50 mb-0" style="font-size: 0.875rem;">Comprension y Produccion de Textos I</p>
+                        <p class="text-white-50 mb-0" style="font-size: 0.875rem;">Comprensión y Producción de Textos I</p>
                     </div>
                     <div class="d-flex justify-content-center mb-3">
                         <span class="badge-custom badge-success-custom">
